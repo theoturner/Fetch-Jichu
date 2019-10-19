@@ -6,7 +6,7 @@ setup (
     description = "Infura for Fetch.AI.",
     license = "Apache License 2.0",
     packages = ["jichu"],
-    install_requires = ["fetchai-ledger-api", "pytest"],
+    install_requires = ["fetchai-ledger-api==0.9.0a2", "pytest"],
     author = "Theo Turner",
     author_email = "theo@turner.se",
     keywords = ["blockchain", "infura", "fetch.ai", "fetchai", "crypto", "cryptocurrency", "hosted", "node"],
