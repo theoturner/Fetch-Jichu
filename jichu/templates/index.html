@@ -1,9 +1,15 @@
 <!doctype html>
 <head>
-    <title>Jichu</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+    <title>Jichu</title>  
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    Welcome to Jichu: Infura for Fetch.AI.
+    <div class="logo">
+        &#9633;&#9633;&#9633;<br/>&#9633; &#9633;<br/>&#9633;&#9633;&#9633;<br/><br/>Jichu
+    </div>
+    <form action="/deploy" method="post">
+        <textarea name="contract" rows="10" cols="60" placeholder="Etch contract"></textarea><br>
+        <button name="deploy" type="submit">Deploy</button>
+    </form>
 </body>
