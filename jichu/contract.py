@@ -6,6 +6,11 @@ from contextlib import contextmanager
 
 class ContractDeployer:
 
+    def __init__(self, address: str, port: int):
+        self.api = LedgerApi('127.0.0.1', 8000)
+        self.entity = Entity()
+        # Create wealth so that we have the funds to be able to create contracts on the network
+        self.api.sync(self.api.tokens.wealth(self.entity, 10000))
 
         
     def main(self):
@@ -35,21 +40,10 @@ class ContractDeployer:
             endfunction
         """
 
-        # create our first private key pair
-        entity1 = Entity()
-        address1 = Address(entity1)
-
-        # build the ledger API
-        api = LedgerApi('127.0.0.1', 8000)
-
-        # create wealth so that we have the funds to be able to create contracts on the network
-        api.sync(api.tokens.wealth(entity1, 10000))
-
-        # create the smart contract
         contract = Contract(sample_contract)
 
-        with self.track_cost(api.tokens, entity1, "Cost of creation: "):
-            api.sync(contract.create(api, entity1, 4000))
+        with self.track_cost(self.api.tokens, self.entity, "Cost of creation: "):
+            self.api.sync(contract.create(self.api, self.entity, 4000))
 
 
     @contextmanager
@@ -72,5 +66,5 @@ class ContractDeployer:
         print(message + "{} TOK".format(api.balance(entity) - balance_before))
 
 if __name__ == '__main__':
-    cd = ContractDeployer()
+    cd = ContractDeployer('127.0.0.1', 8000)
     cd.main()
