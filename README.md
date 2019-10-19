@@ -1,7 +1,7 @@
 <p align="center">
-    <img src="./img/jichu.png" width="200" />
+    <img src="./img/jichu.png" width="170" />
     <br><br>
-    <h2>Jichu</h2>
+    <b>Jichu</b>
     <a href="https://github.com/fetchai" alt="Fetch.AI">
         <img src="./img/fetch.svg" />
     </a>
