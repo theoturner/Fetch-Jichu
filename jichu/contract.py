@@ -8,7 +8,7 @@ import sys
 class ContractDeployer:
 
     def __init__(self, address: str, port: int):
-        self.api = LedgerApi('127.0.0.1', 8000)
+        self.api = LedgerApi(address, port)
         self.entity = Entity()
         # Create wealth so that we have the funds to be able to create contracts on the network
         self.api.sync(self.api.tokens.wealth(self.entity, 10000))
