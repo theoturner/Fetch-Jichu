@@ -10,7 +10,7 @@ setup (
     author = "Theo Turner",
     author_email = "theo@turner.se",
     keywords = ["blockchain", "infura", "fetch.ai", "fetchai", "crypto", "cryptocurrency", "hosted", "node"],
-    url = "https://github.com/theoturner/fetch-jichu",
+    url = "https://github.com/theoturner/jichu",
     classifiers = [
         "Development Status :: 1 - Pre-Alpha",
         "Intended Audience :: Developers",
