@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ledger
-./constellation
+cd ledger/build/apps/constellation
+./constellation -standalone -block-interval 1000
