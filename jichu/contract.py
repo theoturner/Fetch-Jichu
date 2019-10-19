@@ -2,6 +2,7 @@ from fetchai.ledger.api import LedgerApi, TokenApi
 from fetchai.ledger.contract import Contract
 from fetchai.ledger.crypto import Entity, Address
 from contextlib import contextmanager
+import sys
 
 
 class ContractDeployer:
@@ -12,7 +13,7 @@ class ContractDeployer:
         # Create wealth so that we have the funds to be able to create contracts on the network
         self.api.sync(self.api.tokens.wealth(self.entity, 10000))
     
-    def main(self, contract : str):
+    def deploy(self, contract : str):
         """
         Deploy contract. Feeds back compilation errors.
         """
@@ -41,5 +42,8 @@ class ContractDeployer:
         print(message + "{} TOK".format(api.balance(entity) - balance_before))
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: python3 contract.py CONTRACT-STRING")
+        exit(1)
     cd = ContractDeployer('127.0.0.1', 8000)
-    cd.main("POTATO;0%")
+    cd.deploy(sys.argv[1])
