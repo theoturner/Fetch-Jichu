@@ -1,6 +1,7 @@
 from fetchai.ledger.api import LedgerApi, TokenApi
 from fetchai.ledger.contract import Contract
 from fetchai.ledger.crypto import Entity, Address
+from contextlib import contextmanager
 
 
 class ContractDeployer:
@@ -47,9 +48,28 @@ class ContractDeployer:
         # create the smart contract
         contract = Contract(sample_contract)
 
-        with track_cost(api.tokens, entity1, "Cost of creation: "):
+        with self.track_cost(api.tokens, entity1, "Cost of creation: "):
             api.sync(contract.create(api, entity1, 4000))
 
+
+    @contextmanager
+    def track_cost(self, api: TokenApi, entity: Entity, message: str):
+        """
+        Context manager for recording the change in balance over a set of actions
+        Will be inaccurate if other factors change an account balance
+        """
+        if isinstance(entity, Entity):
+            entity = Address(entity)
+        elif not isinstance(entity, Address):
+            raise TypeError("Expecting Entity or Address")
+
+        balance_before = api.balance(entity)
+        yield
+
+        if not message:
+            message = "Actions cost: "
+
+        print(message + "{} TOK".format(api.balance(entity) - balance_before))
 
 if __name__ == '__main__':
     cd = ContractDeployer()
