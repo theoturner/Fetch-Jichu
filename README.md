@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./img/logo.png" width="200" />
+    <img src="./img/jichu.png" width="200" />
     <br><br>
     <h2>Jichu</h2>
     <a href="https://github.com/fetchai" alt="Fetch.AI">
