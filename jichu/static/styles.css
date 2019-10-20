@@ -27,6 +27,7 @@ input, textarea {
 button {
     background-color: transparent;
     color: #ffffff;
+    margin-top: 2em;
 }
 button:hover {
     border: 1px solid #5887da;
