@@ -23,3 +23,21 @@
 ```Bash
 pip3 install .
 ```
+
+## Run
+
+```Bash
+cd jichu
+python3 api.py
+```
+
+The UI is now hosted on port 5000.
+
+Jichu can be pointed at a Fetch node in the UI. This works with the alphanet: try `diffusion.fetch.ai`. To point to a local deployment, spin up a node and point Jichu at `127.0.0.1`.
+
+Get and spin up a node:
+
+```Bash
+./scripts/install.sh
+./scripts/node.sh
+```
