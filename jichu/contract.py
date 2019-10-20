@@ -20,7 +20,9 @@ class ContractDeployer:
         try:
             contract = Contract(contract)
             with self.track_cost(self.api.tokens, self.entity, "Cost of creation: "):
-                self.api.sync(contract.create(self.api, self.entity, 4000))
+                result = contract.create(self.api, self.entity, 4000)
+                self.api.sync(result)
+                return result
         except Exception as e:
             print(e)
 
